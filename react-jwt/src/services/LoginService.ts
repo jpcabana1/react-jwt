@@ -1,16 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { User } from "../POJO/User";
-
-export const instance = axios.create({
-    baseURL: 'https://localhost:7082',
-    timeout: 1000,
-    withCredentials: true
-});
+import { authInstance } from "./AuthAxios";
 
 export async function SignIn(params: User) {
 
     try {
-        const response: AxiosResponse<string> = await instance.post<string>('/authenticate', {
+        const response: AxiosResponse<string> = await authInstance.post<string>('/authenticate', {
             Username: params.Username,
             Password: params.Password
         },
