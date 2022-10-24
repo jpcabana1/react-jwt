@@ -6,16 +6,16 @@ function WeatherForecast() {
     const authContext = useAuthContext();
     const navigate = useNavigate();
     useEffect(() => {
-        if(authContext.acessToken === null || authContext.acessToken === ''){
+        if (authContext.acessToken === null || authContext.acessToken === '') {
             setTimeout(() => {
-                navigate('/login', {replace: true})
+                navigate('/login', { replace: true })
             }, 1000);
         }
     }, [])
 
-    return ( <>
+    return (<div >
         <h1>WeatherForecast</h1>
-    </>);
+    </div>);
 }
 
 export default WeatherForecast;

@@ -9,7 +9,7 @@ function Login() {
     const [mensagem, setMensagem] = useState<string>('')
     const [usuario, setUsuario] = useState<string>('')
     const [senha, setSenha] = useState<string>('')
-    const { acessToken, setAcessToken } = useAuthContext();
+    const { setAcessToken } = useAuthContext();
     
     const navigate = useNavigate();
 
@@ -17,8 +17,7 @@ function Login() {
         e.preventDefault();
         await SignIn({ Username: usuario, Password: senha})
             .then((res) => {
-                const resp: string = res
-                setAcessToken(resp)
+                setAcessToken(res)
                 navigate('/weatherforecast', {replace: true})
             })
             .catch(err => {
