@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
-import WeatherForecast from "./components/WeatherForecast";
+import WeatherForecastTable from "./components/WeatherForecastTable";
 import { AuthContext } from "./hooks/AuthProvider";
 import { AuthContextState } from "./POJO/AuthContextState";
 
@@ -28,7 +28,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="login" element={<Login />} />
           <Route path="/app" element={<NavBar />}>
-            <Route index path="/app/weatherforecast" element={<WeatherForecast />} />
+            <Route index path="/app/weatherforecast" element={<WeatherForecastTable />} />
           </Route>
         </Routes>
       </AuthContext.Provider>

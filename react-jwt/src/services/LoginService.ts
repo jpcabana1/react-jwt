@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { User } from "../POJO/User";
-import { authInstance } from "./AuthAxios";
+import { authInstance } from "./AuthAxiosService";
 
 export async function SignIn(params: User) {
 
@@ -13,7 +13,6 @@ export async function SignIn(params: User) {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
             })
-        console.log(response.data)
         return response.data;
     } catch (err) {
         console.log(err);

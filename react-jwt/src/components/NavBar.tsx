@@ -9,7 +9,7 @@ function NavBar() {
   useEffect(() => {
     if (acessToken === null || acessToken === "") {
       setTimeout(() => {
-        navigate("/login", { replace: true })
+        navigate("/", { replace: true })
       }, 1000)
     }
   }, [])
