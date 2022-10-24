@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { User } from "../DTOs/User";
+import { User } from "../DTO/User";
 
 export const instance = axios.create({
     baseURL: 'https://localhost:7082/',
