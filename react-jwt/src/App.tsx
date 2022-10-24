@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login';
+import WeatherForecast from './components/WeatherForecast';
 import { AuthContext } from './hooks/AuthProvider';
 import { AuthContextState } from './POJO/AuthContextState';
-
-
-
 
 function App() {
   const [token, setToken] = useState<string>('')
@@ -23,6 +21,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='login' element={<Login />} />
+          <Route path='/weatherforecast' element={<WeatherForecast />}></Route>
         </Routes>
       </AuthContext.Provider>
 
