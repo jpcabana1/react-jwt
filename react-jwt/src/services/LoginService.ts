@@ -1,8 +1,8 @@
 import axios, { AxiosResponse } from "axios";
-import { User } from "../DTO/User";
+import { User } from "../POJO/User";
 
 export const instance = axios.create({
-    baseURL: 'https://localhost:7082/',
+    baseURL: 'https://localhost:7082',
     timeout: 1000,
     withCredentials: true
 });

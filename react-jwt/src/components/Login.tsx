@@ -1,24 +1,30 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
-import AuthContext from '../hooks/AuthProvider';
+import  { useAuthContext } from '../hooks/AuthProvider';
 import { SignIn } from '../services/LoginService';
 
 
 function Login() {
-    //const [auth, setAuth] = useState<string>('')
     const [mensagem, setMensagem] = useState<string>('')
-    const { setAuth } = useContext(AuthContext);
+    const { acessToken, setAcessToken } = useAuthContext();
 
-
-    const LogIn = () => {
-        SignIn({ Username: 'jpcabana', Password: '' })
-            .then((res) => setAuth({res}))
+    const LogIn = async () => {
+        await SignIn({ Username: 'jpcabana', Password: '' })
+            .then((res) => {
+                const resp : string = res
+                setAcessToken(resp)
+                console.log(acessToken)
+            })
             .catch(err => {
                 console.log(err)
                 setMensagem('Ops, parece que suas credenciais estão erradas ')
                 setTimeout(() => setMensagem(''), 3000)
             })
     }
+
+useEffect(() => {
+    LogIn()
+}, [])
 
     return (
         <div className="App-header">
