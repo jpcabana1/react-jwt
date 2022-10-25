@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/AuthProvider";
+import { getToken, saveToken } from "../services/LoginService";
 
 function NavBar() {
   const { acessToken } = useAuthContext()
+  const token : string | undefined = getToken()
   const navigate = useNavigate()
   useEffect(() => {
-    if (acessToken === null || acessToken === "") {
+    if (token === undefined || token === "") {
       setTimeout(() => {
-        navigate("/", { replace: true })
+        navigate("/login", { replace: true })
       }, 1000)
     }
   }, [])
@@ -23,6 +25,10 @@ function NavBar() {
             <Nav.Link as={Link} to="/app/weatherforecast">Home</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link 
+                  as={Link} to="/login" 
+                  onClick={() => saveToken("")}
+            ><Button variant="outline-warning">Logout</Button></Nav.Link>
           </Nav>
         </Container>
       </Navbar>

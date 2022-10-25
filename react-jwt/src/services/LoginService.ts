@@ -20,3 +20,31 @@ export async function SignIn(params: User) {
     }
 }
 
+export const saveToken = (token : string) : void => {
+    sessionStorage.setItem('token', token)
+}
+
+export const getToken = () : any => {
+    const userSession : string | undefined = sessionStorage.getItem('token')?.toString()
+    return userSession
+}
+
+export const saveUser = (user : string) : void => {
+    sessionStorage.setItem('user', user)
+}
+
+export const getUser = () : any => {
+    const userSession : string | undefined = sessionStorage.getItem('user')?.toString()
+    return userSession
+}
+
+export const savePass = (pass : string) : void => {
+    sessionStorage.setItem('pass', pass)
+}
+
+
+export const getPass = () : any => {
+    const passSession : string | undefined = sessionStorage.getItem('pass')?.toString()
+    return passSession
+}
+

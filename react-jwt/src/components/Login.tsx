@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../hooks/AuthProvider';
-import { SignIn } from '../services/LoginService';
-
+import { savePass, saveToken, saveUser, SignIn, } from '../services/LoginService';
 
 function Login() {
     const [mensagem, setMensagem] = useState<string>('')
@@ -12,13 +11,16 @@ function Login() {
 
     const LogIn = async (event : React.FormEvent) => {
         event.preventDefault();
+        saveUser(user)
+        savePass(pass)
         await SignIn({ Username: user, Password: pass})
             .then((res) => {
-                setAcessToken(res)
+                //setAcessToken(res)
+                saveToken(res)
                 navigate('/app/weatherforecast', {replace: true})
             })
             .catch(err => {
-                setMensagem('Ops, parece que suas credenciais estão erradas ' + err)
+                setMensagem('Credenciais inválidas')
                 setTimeout(() => setMensagem(''), 3000)
             })
     }
