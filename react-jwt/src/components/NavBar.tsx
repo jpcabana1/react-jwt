@@ -6,7 +6,7 @@ import { getToken, saveToken } from "../services/LoginService";
 
 function NavBar() {
   const { acessToken } = useAuthContext()
-  const token : string | undefined = getToken()
+  const token: string | undefined = getToken()
   const navigate = useNavigate()
   useEffect(() => {
     if (token === undefined || token === "") {
@@ -25,9 +25,11 @@ function NavBar() {
             <Nav.Link as={Link} to="/app/weatherforecast">Home</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <Nav.Link 
-                  as={Link} to="/login" 
-                  onClick={() => saveToken("")}
+          </Nav>
+          <Nav>
+            <Nav.Link
+              as={Link} to="/login"
+              onClick={() => saveToken("")}
             ><Button variant="outline-warning">Logout</Button></Nav.Link>
           </Nav>
         </Container>
